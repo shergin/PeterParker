@@ -17,7 +17,10 @@ Pod::Spec.new do |s|
 
   s.source = { :git => "https://github.com/shergin/PeterParker.git", :tag => "v#{s.version}" }
 
-  s.source_files = ["Sources/PeterParker/**/*.{swift,h}"]
+  s.source_files = [
+    "Sources/PeterParker/**/*.swift",
+    "Sources/Umbrella.h"
+  ]
 
   s.preserve_paths = "Sources/**/*"
 
