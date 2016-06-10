@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
   s.social_media_url = "https://twitter.com/shergin"
 
   s.platform = :ios, "8.0"
-  s.deployment_target = "8.0"
 
   s.source = { :git => "https://github.com/shergin/PeterParker.git", :tag => "v#{s.version}" }
   s.source_files  = ["Sources/**/*.{swift,h}"]
