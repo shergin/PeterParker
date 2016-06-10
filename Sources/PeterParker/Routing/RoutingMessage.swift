@@ -16,6 +16,7 @@ public struct RoutingMessage {
     public var _header: rt_msghdr2
     public var _addresses: [sockaddr]
 
+    // # Deferred Fields
     public var addresses: [SocketAddress] {
         var addresses: [SocketAddress] = []
 
@@ -81,21 +82,13 @@ public struct RoutingMessage {
 
 
 extension RoutingMessage {
-    var stringRepresentation: String {
+    public var stringRepresentation: String {
         let destination = self.destinationAddress!.stringRepresentation ?? "<destination>"
         let gateway = self.gatewayAddress!.stringRepresentation ?? "<gateway>"
         let referenceCount = String(self.referenceCount)
         let use = String(self.use)
         let interfaceName = self.networkInterfaceName ?? "unknown"
         return "\(destination) \(gateway) \(referenceCount) \(use) \(interfaceName)"
-    }
-}
-
-
-extension SocketAddress {
-    var routingString: String {
-
-        return ""
     }
 }
 

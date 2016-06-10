@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
 
   s.source_files = [
     "Sources/PeterParker/**/*.swift",
+    "Sources/Utils/**/*.swift",
     "Sources/Umbrella.h"
   ]
 

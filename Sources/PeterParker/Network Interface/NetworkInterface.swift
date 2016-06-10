@@ -72,16 +72,3 @@ extension NetworkInterface {
         return String.fromCString(result)
     }
 }
-
-
-extension String {
-    func padLeft(length: Int, character: Character = " ") -> String {
-        var compoundString = String(count: length, repeatedValue: character) + self
-        return compoundString.substringFromIndex(compoundString.endIndex.advancedBy(-length))
-    }
-
-    func padRight(length: Int, character: Character = " ") -> String {
-        var compoundString = self + String(count: length, repeatedValue: character)
-        return compoundString.substringToIndex(compoundString.startIndex.advancedBy(length))
-    }
-}

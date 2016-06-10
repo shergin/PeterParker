@@ -12,7 +12,6 @@ import net_route
 
 
 extension RoutingMessage {
-
     public init(_ routingMessage: UnsafeMutablePointer<rt_msghdr2>) {
         let buffer = UnsafeMutablePointer<Int8>(routingMessage)
         let routingMessageSize = Int(routingMessage.memory.rtm_msglen)
@@ -30,12 +29,10 @@ extension RoutingMessage {
         self._header = _header
         self._addresses = _addresses
     }
-
 }
 
 
 extension RoutingMessage {
-
     public static func routingTable() -> [RoutingMessage] {
         var name = [Int32]([
             CTL_NET,
@@ -77,5 +74,4 @@ extension RoutingMessage {
 
         return routes
     }
-
 }
