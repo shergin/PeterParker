@@ -25,8 +25,8 @@ Pod::Spec.new do |s|
   s.preserve_paths = "Sources/**/*"
 
   s.pod_target_xcconfig = {
-    'SWIFT_INCLUDE_PATHS[sdk=iphoneos*]'         => '$(SRCROOT)/Sources/Modules/iphoneos',
-    'SWIFT_INCLUDE_PATHS[sdk=iphonesimulator*]'  => '$(SRCROOT)/Sources/Modules/iphonesimulator'
+    'SWIFT_INCLUDE_PATHS[sdk=iphoneos*]' => '$(SRCROOT)/PeterParker/Sources/Modules/iphoneos',
+    'SWIFT_INCLUDE_PATHS[sdk=iphonesimulator*]' => '$(SRCROOT)/PeterParker/Sources/Modules/iphonesimulator'
   }
 
   s.module_map = "Sources/PeterParker.modulemap"
