@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ifaddrs
 
 
 public enum SocketAddressFamily: sa_family_t {

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import ifaddrs
 
 
 public struct SocketAddress {

@@ -1,8 +1,3 @@
 framework module PeterParker {
   umbrella header "Umbrella.h"
-
-  header "PeterParker.h"
-  header "PeterParker+Private.h"
-
-  exclude header "Pods-PeterParker-umbrella.h"
 }

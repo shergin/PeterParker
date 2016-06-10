@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import BSDNetworking
+import ifaddrs
 
 
 public struct LinkSocketAddress: SpecifiedSocketAddress {

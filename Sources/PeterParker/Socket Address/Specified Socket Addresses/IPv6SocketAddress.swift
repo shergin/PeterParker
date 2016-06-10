@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ifaddrs
 
 
 public struct IPv6SocketAddress: SpecifiedSocketAddress {
