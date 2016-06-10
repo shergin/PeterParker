@@ -26,7 +26,7 @@ public struct SocketAddress {
         return SocketAddressFamily(self._address.sa_family)
     }
 
-    var specifiedAddress: SpecifiedSocketAddress {
+    public var specifiedAddress: SpecifiedSocketAddress {
         switch self.family {
         case .IPv4:
             return IPv4SocketAddress(self)
@@ -39,7 +39,7 @@ public struct SocketAddress {
         }
     }
 
-    var stringRepresentation: String? {
+    public var stringRepresentation: String? {
         return self.specifiedAddress.stringRepresentation
     }
 }
