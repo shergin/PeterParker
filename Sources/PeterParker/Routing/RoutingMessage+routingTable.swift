@@ -12,7 +12,8 @@ import net_route
 
 
 extension RoutingMessage {
-    private init(_ routingMessage: UnsafeMutablePointer<rt_msghdr2>) {
+
+    public init(_ routingMessage: UnsafeMutablePointer<rt_msghdr2>) {
         let buffer = UnsafeMutablePointer<Int8>(routingMessage)
         let routingMessageSize = Int(routingMessage.memory.rtm_msglen)
         let firstRoutingAddress = UnsafeMutablePointer<sockaddr>(buffer.advancedBy(sizeof(rt_msghdr2)))
@@ -21,16 +22,21 @@ extension RoutingMessage {
         self.init(routingMessage, routingAddresses)
     }
 
-    private init(_ _header: UnsafeMutablePointer<rt_msghdr2>, _ _addresses: UnsafeMutableBufferPointer<sockaddr>) {
+    public init(_ _header: UnsafeMutablePointer<rt_msghdr2>, _ _addresses: UnsafeMutableBufferPointer<sockaddr>) {
         self.init(_header.memory, Array(_addresses.generate()))
     }
 
-    private init(_ _header: rt_msghdr2, _ _addresses: [sockaddr]) {
+    public init(_ _header: rt_msghdr2, _ _addresses: [sockaddr]) {
         self._header = _header
         self._addresses = _addresses
     }
 
-    static func routingTable() -> [RoutingMessage] {
+}
+
+
+extension RoutingMessage {
+
+    public static func routingTable() -> [RoutingMessage] {
         var name = [Int32]([
             CTL_NET,
             PF_ROUTE,
@@ -63,7 +69,6 @@ extension RoutingMessage {
         var routingMessageBuffer = buffer
         while routingMessageBuffer < bufferLimit {
             let routingMessage = UnsafeMutablePointer<rt_msghdr2>(routingMessageBuffer)
-            print(routingMessage.memory.rtm_msglen)
             routes.append(RoutingMessage(routingMessage))
 
             let routingMessageSize = Int(routingMessage.memory.rtm_msglen)
@@ -72,4 +77,5 @@ extension RoutingMessage {
 
         return routes
     }
+
 }

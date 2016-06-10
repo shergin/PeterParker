@@ -16,7 +16,9 @@ Pod::Spec.new do |s|
   s.platform = :ios, "8.0"
 
   s.source = { :git => "https://github.com/shergin/PeterParker.git", :tag => "v#{s.version}" }
+
   s.source_files  = ["Sources/**/*.{swift,h}"]
+  s.exclude_source_files = ["Sources/Modules/**/*"]
 
   s.preserve_paths = "Sources/**/*"
 
