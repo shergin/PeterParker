@@ -19,6 +19,7 @@ public struct UnspecifiedSocketAddress: SpecifiedSocketAddress {
     }
 
     public var stringRepresentation: String? {
+        /*
         let totalLength = self._addresses[0].sa_len
         let _addressesBuffer = UnsafeBufferPointer<sockaddr>(start: _addresses, count: _addresses.count)
         let _data = UnsafePointer(_addresses[0].sa_data)
@@ -29,7 +30,7 @@ public struct UnspecifiedSocketAddress: SpecifiedSocketAddress {
         bytes.map {  }
 
         self._address = _addressBuffer.baseAddress.memory
-
+        */
         return "Unspecified"
     }
     

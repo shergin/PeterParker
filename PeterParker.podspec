@@ -2,10 +2,10 @@ Pod::Spec.new do |s|
 
   s.name = "PeterParker"
   s.version = "1.4.5"
-  s.summary = "PeterParker"
+  s.summary = "Beautiful wrapper around ugly Mac/BSD low-level network API. Written in Swift."
 
   s.description  = <<-DESC
-                   PeterParker
+                   Beautiful wrapper around ugly Mac/BSD low-level network API. Written in Swift.
                    DESC
 
   s.homepage = "https://github.com/shergin/PeterParker"

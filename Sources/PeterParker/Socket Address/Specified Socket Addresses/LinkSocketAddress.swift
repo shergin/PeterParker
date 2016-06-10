@@ -8,6 +8,7 @@
 
 import Foundation
 import ifaddrs
+import net_if_dl
 
 
 public struct LinkSocketAddress: SpecifiedSocketAddress {

@@ -39,10 +39,3 @@ extension RouteType {
         self = RouteType(rawValue: _routeType)!
     }
 }
-
-//
-//extension RouteType: CustomStringConvertible {
-//    public var description: String {
-//        return "RouteType(\(self))"
-//    }
-//}
