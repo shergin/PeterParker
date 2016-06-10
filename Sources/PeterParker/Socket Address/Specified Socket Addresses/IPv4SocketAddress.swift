@@ -27,4 +27,3 @@ public struct IPv4SocketAddress: SpecifiedSocketAddress {
         return String.fromCString(cString)
     }
 }
-
