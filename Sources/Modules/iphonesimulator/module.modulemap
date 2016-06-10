@@ -1,5 +1,4 @@
-module BSDNetworking [system] {
-    header "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/route.h"
+module ifaddrs [system] {
     header "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/ifaddrs.h"
     export *
 }
