@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import ifaddrs
-import net_route
+import PeterParkerPrivate.ifaddrs
+import PeterParkerPrivate.net_route
 
 
 public struct RoutingMessage {

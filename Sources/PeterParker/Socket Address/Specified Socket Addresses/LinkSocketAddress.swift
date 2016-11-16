@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import ifaddrs
-import net_if_dl
+import PeterParkerPrivate.ifaddrs
+import PeterParkerPrivate.net_if_dl
 
 
 public struct LinkSocketAddress: SpecifiedSocketAddress {

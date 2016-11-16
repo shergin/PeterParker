@@ -1,18 +1,17 @@
-// #import <ifaddrs.h>
-module ifaddrs [system] [extern_c] {
-    header "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/ifaddrs.h"
-    export *
-}
+module PeterParkerPrivate {
+	explicit module ifaddrs [system] [extern_c] {
+	    header "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/ifaddrs.h"
+	    export *
+	}
 
-// #import <net/if_dl.h>
-module net_if_dl [system] [extern_c] {
-    header "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/sys/types.h"
-    header "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/net/if_dl.h"
-    export *
-}
+	explicit module net_if_dl [system] [extern_c] {
+	    header "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/sys/types.h"
+	    header "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/net/if_dl.h"
+	    export *
+	}
 
-// #import <net/route.h>
-module net_route [system] [extern_c] {
-    header "route.h"
-    export *
+	explicit module net_route [system] [extern_c] {
+	    header "route.h"
+	    export *
+	}	
 }

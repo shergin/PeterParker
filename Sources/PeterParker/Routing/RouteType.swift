@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ifaddrs
+import PeterParkerPrivate.ifaddrs
 
 
 public enum RouteType: CUnsignedChar {
