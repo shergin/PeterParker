@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
 
   s.name = "PeterParker"
-  s.version = "1.4.5"
-  s.summary = "Beautiful wrapper around ugly Mac/BSD low-level network API. Written in Swift."
+  s.version = "2.0.0"
+  s.summary = "Beautiful wrapper around ugly Mac/BSD low-level network API. Written in Swift 3."
 
   s.description  = <<-DESC
                    Beautiful wrapper around ugly Mac/BSD low-level network API. Written in Swift.
