@@ -17,8 +17,8 @@ public struct LinkSocketAddress: SpecifiedSocketAddress {
 
     public init(_ _addresses: [sockaddr]) {
         let _addressesBuffer = UnsafeBufferPointer<sockaddr>(start: _addresses, count: _addresses.count)
-        let _addressBuffer = unsafeBitCast(_addressesBuffer, UnsafeBufferPointer<sockaddr_dl>.self)
-        self._address = _addressBuffer.baseAddress.memory
+        let _addressBuffer = unsafeBitCast(_addressesBuffer, to: UnsafeBufferPointer<sockaddr_dl>.self)
+        self._address = (_addressBuffer.baseAddress?.pointee)!
     }
 
     public var stringRepresentation: String? {
@@ -28,7 +28,7 @@ public struct LinkSocketAddress: SpecifiedSocketAddress {
 
         var _address = self._address
         let cString: UnsafeMutablePointer<CChar> = link_ntoa(&_address)
-        return String.fromCString(cString)
+        return String(cString: cString)
     }
 
 }

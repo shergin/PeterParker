@@ -16,14 +16,14 @@ public struct IPv4SocketAddress: SpecifiedSocketAddress {
 
     public init(_ _addresses: [sockaddr]) {
         let _addressesBuffer = UnsafeBufferPointer<sockaddr>(start: _addresses, count: _addresses.count)
-        let _addressBuffer = unsafeBitCast(_addressesBuffer, UnsafeBufferPointer<sockaddr_in>.self)
-        self._address = _addressBuffer.baseAddress.memory
+        let _addressBuffer = unsafeBitCast(_addressesBuffer, to: UnsafeBufferPointer<sockaddr_in>.self)
+        self._address = (_addressBuffer.baseAddress?.pointee)!
     }
 
     public var stringRepresentation: String? {
-        var buffer = [Int8](count: Int(INET_ADDRSTRLEN), repeatedValue: Int8(0))
+        var buffer = [Int8](repeating: Int8(0), count: Int(INET_ADDRSTRLEN))
         var _address = self._address
         let cString: UnsafePointer<CChar> = inet_ntop(AF_INET, &_address.sin_addr, &buffer, socklen_t(INET_ADDRSTRLEN))
-        return String.fromCString(cString)
+        return String(cString:cString)
     }
 }

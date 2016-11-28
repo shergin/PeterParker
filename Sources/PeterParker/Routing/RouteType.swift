@@ -9,28 +9,30 @@
 import Foundation
 import PeterParkerPrivate.ifaddrs
 
-
+/// Mapping of messages operating on routing table
+///
+/// See [route(4)](https://www.freebsd.org/cgi/man.cgi?query=route&sektion=4&apropos=0&manpath=FreeBSD+10.3-RELEASE+and+Ports)
 public enum RouteType: CUnsignedChar {
-    case Add = 1
-    case Delete
-    case Change
-    case Get
-    case Losing
-    case Redirect
-    case Miss
-    case Lock
-    case OldAdd
-    case OldDel
-    case Resolve
-    case NewAddress
-    case DeleteAddress
-    case InterfaceInfo
-    case NewMembershipAddress
-    case DeleteMembershipAddress
-    case GetSilent
-    case InterfaceInfo2
-    case NewMembershipAddress2
-    case Get2
+    case add = 1
+    case delete
+    case change
+    case get
+    case losing
+    case redirect
+    case miss
+    case lock
+    case oldAdd
+    case oldDel
+    case resolve
+    case newAddress
+    case deleteAddress
+    case interfaceInfo
+    case newMembershipAddress
+    case deleteMembershipAddress
+    case getSilent
+    case interfaceInfo2
+    case newMembershipAddress2
+    case get2
 }
 
 
