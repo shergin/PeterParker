@@ -1,0 +1,11 @@
+//
+//  PeterParker.xcconfig
+//  PeterParker
+//
+//  Created by Yevhen Dubinin on 11/28/16.
+//  Copyright © 2016 Yevhen Dubinin. All rights reserved.
+//
+
+SWIFT_INCLUDE_PATHS[sdk=iphoneos*] = $(SRCROOT)/Sources/Modules/iphoneos
+SWIFT_INCLUDE_PATHS[sdk=iphonesimulator*] = $(SRCROOT)/Sources/Modules/iphonesimulator
+MODULEMAP_FILE = $(SRCROOT)/Sources/PeterParker.modulemap
