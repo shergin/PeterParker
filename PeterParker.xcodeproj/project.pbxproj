@@ -259,7 +259,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
-				ORGANIZATIONNAME = "Yevhen Dubinin";
+				ORGANIZATIONNAME = "The PeterParker Authors.";
 				TargetAttributes = {
 					5821B5521DEC8DDF0059B6EE = {
 						CreatedOnToolsVersion = 8.1;
