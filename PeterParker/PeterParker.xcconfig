@@ -3,7 +3,7 @@
 //  PeterParker
 //
 //  Created by Yevhen Dubinin on 11/28/16.
-//  Copyright © 2016 Yevhen Dubinin. All rights reserved.
+//  Copyright © 2016 The PeterParker Authors. All rights reserved.
 //
 
 SWIFT_INCLUDE_PATHS[sdk=iphoneos*] = $(SRCROOT)/Sources/Modules/iphoneos
