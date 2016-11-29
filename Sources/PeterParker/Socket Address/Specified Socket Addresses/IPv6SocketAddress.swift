@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ifaddrs
+import PeterParkerPrivate.ifaddrs
 
 
 public struct IPv6SocketAddress: SpecifiedSocketAddress {
@@ -16,14 +16,14 @@ public struct IPv6SocketAddress: SpecifiedSocketAddress {
 
     public init(_ _addresses: [sockaddr]) {
         let _addressesBuffer = UnsafeBufferPointer<sockaddr>(start: _addresses, count: _addresses.count)
-        let _addressBuffer = unsafeBitCast(_addressesBuffer, UnsafeBufferPointer<sockaddr_in6>.self)
-        self._address = _addressBuffer.baseAddress.memory
+        let _addressBuffer = unsafeBitCast(_addressesBuffer, to: UnsafeBufferPointer<sockaddr_in6>.self)
+        self._address = (_addressBuffer.baseAddress?.pointee)!
     }
 
     public var stringRepresentation: String? {
-        var buffer = [CChar](count: Int(INET6_ADDRSTRLEN), repeatedValue: CChar(0))
+        var buffer = [CChar](repeating: CChar(0), count: Int(INET6_ADDRSTRLEN))
         var _address = self._address
         let cString: UnsafePointer<CChar> = inet_ntop(AF_INET6, &_address.sin6_addr, &buffer, socklen_t(INET6_ADDRSTRLEN))
-        return String.fromCString(cString)
+        return String(cString: cString)
     }
 }

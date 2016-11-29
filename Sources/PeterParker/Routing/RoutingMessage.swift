@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import ifaddrs
-import net_route
+import PeterParkerPrivate.ifaddrs
+import PeterParkerPrivate.net_route
 
 
 public struct RoutingMessage {
@@ -45,12 +45,12 @@ public struct RoutingMessage {
 
     public subscript(index: Int) -> SocketAddress? {
         guard index < self._addresses.count else { return nil }
-        guard self.isValidSocketAddressAtIndex(index) else { return nil }
+        guard self.isValidSocketAddressAtIndex(index: index) else { return nil }
 
         var _addresses: [sockaddr] = [self._addresses[index]]
 
         var i = index + 1
-        while !self.isValidSocketAddressAtIndex(i) && i < self._addresses.count {
+        while !self.isValidSocketAddressAtIndex(index: i) && i < self._addresses.count {
             _addresses.append(self._addresses[i])
             i += 1
         }
@@ -63,7 +63,7 @@ public struct RoutingMessage {
     }
 
     public var networkInterfaceName: String? {
-        return NetworkInterface.interfaceNameByIndex(Int(self._header.rtm_index))
+        return NetworkInterface.interfaceNameByIndex(index: Int(self._header.rtm_index))
     }
 
     // # Flags
@@ -97,7 +97,7 @@ extension RoutingMessage: CustomStringConvertible {
     public var description: String {
         return
             "RoutingMessage(" +
-                "routeType: \(String(self.routeType)), " +
+                "routeType: \(String(describing: self.routeType)), " +
                 "destinationAddress: \(self.destinationAddress?.description), " +
                 "netmaskAddress: \(self.netmaskAddress?.description), " +
                 "gatewayAddress: \(self.gatewayAddress?.description), " +

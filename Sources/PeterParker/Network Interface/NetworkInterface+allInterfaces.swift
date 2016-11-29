@@ -8,3 +8,5 @@
 
 import Foundation
 
+// Implementation is moved to NetworkInterface.swift
+// due to some "segmantation fault"

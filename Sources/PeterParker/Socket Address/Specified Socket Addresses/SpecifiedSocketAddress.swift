@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ifaddrs
+import PeterParkerPrivate.ifaddrs
 
 
 public protocol SpecifiedSocketAddress {
