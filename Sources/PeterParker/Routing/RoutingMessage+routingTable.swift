@@ -10,9 +10,12 @@ import Foundation
 import PeterParkerPrivate.ifaddrs
 import PeterParkerPrivate.net_route
 
+fileprivate enum RoutingMessageError: Swift.Error {
+    case zeroRoutingMessageSize
+}
 
 extension RoutingMessage {
-    public init(_ routingMessage: UnsafeMutablePointer<rt_msghdr2>) {
+    public init(_ routingMessage: UnsafeMutablePointer<rt_msghdr2>) throws {
         
         /// WARNING: unsafeBitCast(_:to:) is very dangerous!
         /// Read more here: https://swift.org/migration-guide/se-0107-migrate.html
@@ -20,6 +23,9 @@ extension RoutingMessage {
         
         let buffer = unsafeBitCast(routingMessage.self, to: UnsafeMutablePointer<UInt8>.self)
         let routingMessageSize: CUnsignedShort = routingMessage.pointee.rtm_msglen
+        guard routingMessageSize > 0 else {
+            throw RoutingMessageError.zeroRoutingMessageSize
+        }
         let firstRoutingAddressPtr = buffer.advanced(by: MemoryLayout<rt_msghdr2>.stride)
         let firstRoutingAddress = unsafeBitCast(firstRoutingAddressPtr.self, to: UnsafeMutablePointer<sockaddr>.self)
         let routingAddressesCount = (Int(routingMessageSize) - MemoryLayout<rt_msghdr2>.size) / MemoryLayout<sockaddr>.size
@@ -81,7 +87,14 @@ extension RoutingMessage {
             /// TODO: reinterpret the in-memory values as the rt_msghdr2 type in a SAFE WAY
             
             let routingMessage = unsafeBitCast(routingMessageBuffer.self, to: UnsafeMutablePointer<rt_msghdr2>.self)
-            routes.append(RoutingMessage(routingMessage))
+            
+            do {
+                let routingMessageValue = try RoutingMessage(routingMessage)
+                routes.append(routingMessageValue)
+            }
+            catch let error {
+                print("Failed to create RoutingMessage. Error was:\n\(error)")
+            }
             
             let routingMessageSize = Int(routingMessage.pointee.rtm_msglen)
             routingMessageBuffer = routingMessageBuffer.advanced(by: routingMessageSize)
