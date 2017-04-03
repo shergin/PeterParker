@@ -2,7 +2,7 @@
 Beautiful wrapper around ugly Mac/BSD low-level network API. Written in Swift 3.
 
 # Requirements
-- Xcode 8.2.1
+- Xcode 8.3
 - Swift 3.0.1
 - CocoaPods 1.1.0
 - iOS 9.0+ (should work on iOS version lower than iOS 9, but not tested for a while)
