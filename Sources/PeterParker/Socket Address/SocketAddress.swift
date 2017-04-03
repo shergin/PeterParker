@@ -53,7 +53,7 @@ extension SocketAddress: CustomStringConvertible {
     public var description: String {
         return
             "SocketAddress(" +
-                "address: \(self.specifiedAddress.stringRepresentation)" +
+                "address: \(String(describing: self.specifiedAddress.stringRepresentation))" +
             ")"
     }
 }

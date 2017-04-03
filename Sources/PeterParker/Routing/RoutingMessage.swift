@@ -98,9 +98,9 @@ extension RoutingMessage: CustomStringConvertible {
         return
             "RoutingMessage(" +
                 "routeType: \(String(describing: self.routeType)), " +
-                "destinationAddress: \(self.destinationAddress?.description), " +
-                "netmaskAddress: \(self.netmaskAddress?.description), " +
-                "gatewayAddress: \(self.gatewayAddress?.description), " +
+                "destinationAddress: \(String(describing: self.destinationAddress?.description)), " +
+                "netmaskAddress: \(String(describing: self.netmaskAddress?.description)), " +
+                "gatewayAddress: \(String(describing: self.gatewayAddress?.description)), " +
                 "routingAddresses: \(self.addresses), " +
             ")"
     }
