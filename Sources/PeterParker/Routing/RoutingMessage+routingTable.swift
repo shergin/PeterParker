@@ -21,12 +21,18 @@ extension RoutingMessage {
         /// Read more here: https://swift.org/migration-guide/se-0107-migrate.html
         /// TODO: reinterpret the in-memory values as the rt_msghdr2 type in a SAFE WAY
         
+        /// FIXME: 'unsafeBitCast' from 'UnsafeMutablePointer<rt_msghdr2>' to 'UnsafeMutablePointer<UInt8>' 
+        /// changes pointee and may lead to undefined behavior; use the 'withMemoryRebound' 
+        /// method on 'UnsafeMutablePointer<rt_msghdr2>' to rebind the type of memory
         let buffer = unsafeBitCast(routingMessage.self, to: UnsafeMutablePointer<UInt8>.self)
         let routingMessageSize: CUnsignedShort = routingMessage.pointee.rtm_msglen
         guard routingMessageSize > 0 else {
             throw RoutingMessageError.zeroRoutingMessageSize
         }
         let firstRoutingAddressPtr = buffer.advanced(by: MemoryLayout<rt_msghdr2>.stride)
+        /// FIXME: 'unsafeBitCast' from 'UnsafeMutablePointer<rt_msghdr2>' to 'UnsafeMutablePointer<UInt8>'
+        /// changes pointee and may lead to undefined behavior; use the 'withMemoryRebound'
+        /// method on 'UnsafeMutablePointer<rt_msghdr2>' to rebind the type of memory
         let firstRoutingAddress = unsafeBitCast(firstRoutingAddressPtr.self, to: UnsafeMutablePointer<sockaddr>.self)
         let routingAddressesCount = (Int(routingMessageSize) - MemoryLayout<rt_msghdr2>.size) / MemoryLayout<sockaddr>.size
         let routingAddresses = UnsafeMutableBufferPointer<sockaddr>(start: firstRoutingAddress, count: routingAddressesCount)
@@ -86,6 +92,9 @@ extension RoutingMessage {
             /// Read more here: https://swift.org/migration-guide/se-0107-migrate.html
             /// TODO: reinterpret the in-memory values as the rt_msghdr2 type in a SAFE WAY
             
+            /// FIXME: 'unsafeBitCast' from 'UnsafeMutablePointer<rt_msghdr2>' to 'UnsafeMutablePointer<UInt8>'
+            /// changes pointee and may lead to undefined behavior; use the 'withMemoryRebound'
+            /// method on 'UnsafeMutablePointer<rt_msghdr2>' to rebind the type of memory
             let routingMessage = unsafeBitCast(routingMessageBuffer.self, to: UnsafeMutablePointer<rt_msghdr2>.self)
             
             do {
